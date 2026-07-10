@@ -1,0 +1,470 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Poppins,sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+    color:#333;
+}
+
+/* Navigation */
+
+header{
+    background:#222;
+    color:white;
+    top:0;
+}
+
+nav{
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+nav li{
+    margin-left:20px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#00bcd4;
+}
+
+/* Hero */
+
+.hero{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:linear-gradient(135deg,#2193b0,#6dd5ed);
+    color:white;
+}
+
+.hero h1{
+    font-size:3rem;
+}
+
+.hero span{
+    color:yellow;
+}
+
+.hero p{
+    margin:20px 0;
+}
+
+.btn{
+    background:white;
+    color:#2193b0;
+    padding:12px 25px;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:bold;
+}
+
+.btn:hover{
+    background:#222;
+    color:white;
+}
+
+/* Sections */
+
+section{
+    padding:70px 10%;
+}
+
+section h2{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.section-intro{
+    max-width:760px;
+    margin:-20px auto 40px;
+    text-align:center;
+    color:#666;
+    line-height:1.7;
+}
+
+/* About */
+
+.about-container{
+    display:flex;
+    gap:40px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.about-container img{
+    width:250px;
+    border-radius:50%;     
+      }
+      .about-container ul{
+        margin-top:20px;
+      }
+
+/* Projects */
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 0 10px rgba(0,0,0,.2);
+}
+
+.card img{
+    width:100%;
+}
+
+.card h3{
+    padding:15px;
+}
+
+.card p{
+    padding:0 15px 20px;
+}
+
+
+/*achieve*/
+.achieve1 {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+.card1 img{
+    width:100%;
+}
+.card1{
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 0 10px rgba(0,0,0,.2);
+}
+
+.card1 h3{
+    padding:15px;
+}
+
+.card1 p{
+    padding:0 15px 20px;
+}
+
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.95;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (Image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation - Zoom in the Modal */
+.modal-content, #caption {
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+
+
+/* Contact */
+
+#contact{
+    background:white;
+}
+
+form{
+    max-width:600px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    background:#f7fbfc;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,.12);
+}
+
+label{
+    margin-bottom:8px;
+    font-weight:600;
+    color:#222;
+}
+
+input,
+textarea{
+    padding:15px;
+    margin-bottom:20px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    font-size:1rem;
+    resize:vertical;
+}
+
+input:focus,
+textarea:focus{
+    outline:none;
+    border-color:#2193b0;
+    box-shadow:0 0 0 3px rgba(33,147,176,.16);
+}
+
+button{
+    background:#2193b0;
+    color:white;
+    padding:15px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:1rem;
+    font-weight:600;
+    transition:.3s;
+}
+
+button:hover{
+    background:#176d82;
+}
+
+.form-status{
+    min-height:24px;
+    margin-top:15px;
+    text-align:center;
+    font-weight:600;
+}
+
+.form-status.success{
+    color:#176d82;
+}
+
+.form-status.error{
+    color:#b00020;
+}
+
+.form-status.warning{
+    color:#9a5a00;
+}
+
+.message-database{
+    max-width:600px;
+    margin:30px auto 0;
+    background:#f7fbfc;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,.12);
+}
+
+.database-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin-bottom:18px;
+}
+
+.database-header h3{
+    font-size:1.25rem;
+    color:#222;
+}
+
+.clear-button{
+    width:auto;
+    padding:9px 14px;
+    background:#555;
+    font-size:.9rem;
+}
+
+.clear-button:hover{
+    background:#333;
+}
+
+.messages-list{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.saved-message{
+    background:white;
+    border:1px solid #d7edf2;
+    border-left:5px solid #2193b0;
+    border-radius:8px;
+    padding:15px;
+}
+
+.saved-message h4{
+    margin-bottom:5px;
+    color:#222;
+}
+
+.saved-message a{
+    color:#2193b0;
+    font-weight:600;
+    text-decoration:none;
+    overflow-wrap:anywhere;
+}
+
+.saved-message span{
+    display:block;
+    margin:10px 0;
+    color:#666;
+    font-size:.9rem;
+}
+
+.saved-message p{
+    color:#333;
+    line-height:1.6;
+    overflow-wrap:anywhere;
+}
+
+.empty-message{
+    text-align:center;
+    color:#666;
+}
+
+/* Footer */
+
+footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+nav{
+    flex-direction:column;
+}
+
+nav ul{
+    margin-top:15px;
+    gap:12px;
+}
+
+nav li{
+    margin-left:0;
+}
+
+.hero h1{
+    font-size:2rem;
+}
+
+.about-container{
+    flex-direction:column;
+    text-align:center;
+}
+
+#myBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 30px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 9999; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: red; /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+  font-size: 18px; /* Increase font size */
+}
+
+#myBtn:hover {
+  background-color: #555; /* Add a dark-grey background on hover */
+      transform: translateY(-5px);
+}
+
+
+
+
+
+}
+
