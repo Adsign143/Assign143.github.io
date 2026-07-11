@@ -1,7 +1,3 @@
-CREATE DATABASE IF NOT EXISTS portfolio_db;
-
-USE portfolio_db;
-
 CREATE TABLE IF NOT EXISTS messages (
     id INT AUTO_INCREMENT PRIMARY KEY,
     local_id VARCHAR(50),
