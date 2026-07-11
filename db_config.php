@@ -1,37 +1,19 @@
 <?php
-$host = "localhost";
-$database = "portfolio_db";
-$username = "root";
-$password = "";
 
-try {
-    $pdo = new PDO(
-        "mysql:host=$host;charset=utf8mb4",
-        $username,
-        $password,
-        [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-        ]
-    );
+$host = "sql300.infinityfree.com";
+$user = "if0_42385395";
+$password = "lCxdkigTbEPT1d";
+$database = "if0_42385395_MyPortfolio_Database";
 
-    $pdo->exec("CREATE DATABASE IF NOT EXISTS `$database` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
-    $pdo->exec("USE `$database`");
-    $pdo->exec(
-        "CREATE TABLE IF NOT EXISTS messages (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            local_id VARCHAR(50),
-            name VARCHAR(100) NOT NULL,
-            email VARCHAR(150) NOT NULL,
-            message TEXT NOT NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )"
-    );
-} catch (PDOException $error) {
-    http_response_code(500);
-    echo json_encode([
-        "success" => false,
-        "message" => "Database connection failed: " . $error->getMessage()
-    ]);
-    exit;
+$conn = mysqli_connect(
+    $host,
+    $user,
+    $password,
+    $database
+);
+
+if (!$conn) {
+    die("Database connection failed: " . mysqli_connect_error());
 }
+
+?>
