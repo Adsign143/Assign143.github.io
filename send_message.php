@@ -1,6 +1,6 @@
 <?php
 
-include "config.php";
+include "db_config.php";
 
 
 $name = $_POST['name'];
