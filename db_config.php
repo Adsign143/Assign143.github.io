@@ -1,19 +1,22 @@
 <?php
 
-$host = "sql300.infinityfree.com";
-$user = "if0_42385395";
-$password = "lCxdkigTbEPT1d";
-$database = "if0_42385395_MyPortfolio_Database";
+$host = "localhost";
+$dbname = "portfolio_db";
+$username = "root";
+$password = "";
 
-$conn = mysqli_connect(
-    $host,
-    $user,
-    $password,
-    $database
-);
+try {
+    $pdo = new PDO(
+        "mysql:host=$host;dbname=$dbname;charset=utf8",
+        $username,
+        $password
+    );
 
-if (!$conn) {
-    die("Database connection failed: " . mysqli_connect_error());
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+} catch (PDOException $e) {
+    die(json_encode([
+        "success" => false,
+        "message" => $e->getMessage()
+    ]));
 }
-
-?>
