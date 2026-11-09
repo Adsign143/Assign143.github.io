@@ -89,7 +89,7 @@ p + p { margin-top: .85rem; }
 .featured-art img { width: min(80%, 280px); height: auto; border: 6px solid #e8d9c1; box-shadow: 0 12px 28px #0005; }
 .featured-copy { align-self: center; padding: clamp(1.3rem, 4vw, 2.6rem); }
 .featured-copy h3 { margin-block: .55rem .7rem; font-size: clamp(2rem, 4vw, 3rem); }
-.featured-copy > p:not(.eyebrow), .project > p:not(.project-label), .skills-grid p, .about-layout > div > p { max-width: 65ch; color: var(--muted); }
+.featured-copy > p:not(.eyebrow), .project > p:not(.project-label), .skills-grid p { max-width: 65ch; color: var(--muted); }
 .featured .actions { margin-top: 1.2rem; }
 .tags { display: flex; flex-wrap: wrap; gap: .4rem; list-style: none; padding: 0; margin: 1rem 0 0; }
 .tags li { border: 1px solid var(--line); padding: .25rem .55rem; color: var(--accent); background: var(--soft); font-size: .78rem; font-weight: 600; }
@@ -103,16 +103,32 @@ p + p { margin-top: .85rem; }
 .project .text-link { margin-top: auto; padding-top: 1rem; font-size: .9rem; }
 .skill-number { display: grid; place-items: center; width: 2.15rem; height: 2.15rem; border: 1px solid var(--line); color: var(--accent); font-size: .8rem; font-weight: 650; }
 .skills-grid .tags { margin-top: auto; padding-top: 1rem; }
-.about-section { background: var(--section); border-block: 1px solid var(--line); }
-.about-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(1.3rem, 6vw, 5rem); }
-.about-layout .section-header { margin-bottom: 0; }
-.highlights { list-style: none; padding: 0; margin: 1.25rem 0; }
-.highlights li { padding: .7rem 0; border-bottom: 1px solid var(--line); }
-.highlights strong, .highlights span { display: block; }
-.highlights span { color: var(--muted); }
-.gallery summary { cursor: pointer; color: var(--accent); font-weight: 650; }
-.gallery ul { columns: 2; padding-left: 1.3rem; }
-.gallery li { break-inside: avoid; margin-bottom: .45rem; }
+.about-section { background: radial-gradient(ellipse at 100% 0, #2b2116, transparent 55%), var(--section); border-block: 1px solid var(--line); }
+.about-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(1rem, 5vw, 5rem); align-items: end; margin-bottom: clamp(1.5rem, 4vw, 3rem); }
+.about-intro .section-header, .about-intro h2 { margin-bottom: 0; }
+.about-bio { max-width: 64ch; color: var(--muted); font-size: clamp(1rem, 1.35vw, 1.2rem); line-height: 1.7; }
+.teaching-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.teaching-card { display: flex; flex-direction: column; min-width: 0; background: var(--surface); border: 1px solid var(--line); }
+.teaching-card img { width: 100%; height: clamp(12rem, 19vw, 21rem); border-bottom: 1px solid var(--line); background: #211b14; }
+.teaching-card .teaching-poster { object-fit: contain; padding: clamp(.65rem, 1.5vw, 1.25rem); }
+.teaching-card .teaching-photo { object-fit: cover; object-position: center 51%; }
+.teaching-copy { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: clamp(1.1rem, 2.5vw, 2rem); }
+.teaching-copy h3 { margin-block: .45rem .65rem; font-size: clamp(1.4rem, 2.5vw, 2.05rem); }
+.teaching-copy > p:not(.eyebrow) { color: var(--muted); max-width: 55ch; }
+.teaching-copy .text-link { margin-top: auto; padding-top: 1rem; }
+.gallery { margin-top: 1rem; border: 1px solid var(--line); background: var(--surface); }
+.gallery summary { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: .7rem; cursor: pointer; padding: 1rem clamp(.85rem, 2vw, 1.45rem); color: var(--accent); font-weight: 700; list-style: none; }
+.gallery summary::-webkit-details-marker { display: none; }
+.gallery summary:hover { background: var(--soft); }
+.gallery-count { font-size: .75rem; color: var(--muted); white-space: nowrap; }
+.gallery-toggle { display: grid; place-items: center; width: 1.75rem; height: 1.75rem; border: 1px solid var(--line); }
+.gallery-toggle::before { content: "+"; }
+.gallery[open] .gallery-toggle::before { content: "−"; }
+.gallery-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem; margin: 0; padding: clamp(.85rem, 2vw, 1.45rem); border-top: 1px solid var(--line); list-style: none; }
+.gallery-grid a { display: flex; flex-direction: column; height: 100%; border: 1px solid var(--line); background: var(--canvas); text-decoration: none; }
+.gallery-grid a:hover { border-color: var(--accent); color: var(--accent); }
+.gallery-grid img { width: 100%; aspect-ratio: 4 / 3; max-height: 13rem; object-fit: cover; }
+.gallery-grid span { padding: .6rem .7rem; font-size: .82rem; font-weight: 600; overflow-wrap: anywhere; }
 .contact-section { display: grid; grid-template-columns: 1.4fr .6fr; gap: 1.3rem; align-items: center; background: radial-gradient(circle at 100% 0, #41301d, transparent 70%), var(--deep); border: 1px solid #8f7350; padding: clamp(1.5rem, 5vw, 3rem); margin-top: clamp(2rem, 5vw, 4rem); }
 .contact-section h2 { max-width: 20ch; }
 .contact-section p:last-child { color: var(--muted); }
@@ -133,7 +149,8 @@ p + p { margin-top: .85rem; }
     .profile { max-width: 36rem; }
     .profile figcaption { flex-wrap: wrap; }
     .project-grid, .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .about-layout, .contact-section { grid-template-columns: 1fr; }
+    .about-intro, .contact-section { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .contact-links { justify-self: start; }
 }
 @media (max-width: 575px) {
@@ -142,12 +159,11 @@ p + p { margin-top: .85rem; }
     .nav-links { grid-column: 1 / -1; grid-row: 2; gap: 1.2rem; }
     .nav-links a { display: inline-block; padding-block: .25rem; }
     .navigation > .button { grid-column: 2; grid-row: 1; }
-    .featured, .project-grid, .skills-grid { grid-template-columns: 1fr; }
+    .featured, .project-grid, .skills-grid, .teaching-grid { grid-template-columns: 1fr; }
     .hero { padding-block: 2.3rem; gap: 1.55rem; }
     .profile img { aspect-ratio: 1.4; object-position: center 35%; }
     .featured-art { min-height: 0; padding: 1rem; }
     .featured-art img { width: min(62%, 215px); }
-    .gallery ul { columns: 1; }
 }
 
 @media (max-width: 360px) {
