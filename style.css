@@ -71,7 +71,10 @@ p + p { margin-top: .85rem; }
 .hero-description { max-width: 54ch; color: var(--muted); font-size: clamp(1rem, 1.25vw, 1.25rem); }
 .hero .actions { margin-top: 1.6rem; }
 .hero .button { min-height: 52px; font-size: clamp(.95rem, 1.05vw, 1.1rem); padding-inline: 1.3rem; }
-.profile { overflow: hidden; padding: .55rem; border: 1px solid #8f7350; background: var(--surface); box-shadow: 0 20px 50px #0005; }
+.profile { padding: .55rem; border: 1px solid #8f7350; background: var(--surface); box-shadow: 0 20px 50px #0005; }
+.profile-preview { position: relative; display: block; }
+.profile-preview > span { position: absolute; right: .65rem; bottom: .65rem; display: grid; place-items: center; width: 2.2rem; height: 2.2rem; color: var(--accent-light); background: var(--canvas); border: 1px solid var(--line); }
+.profile-preview:hover > span { color: var(--canvas); background: var(--accent); }
 .profile img { width: 100%; height: auto; max-height: 38rem; aspect-ratio: 1.16; object-fit: cover; object-position: center 43%; filter: saturate(.75) sepia(.09); }
 .profile figcaption { display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding: .95rem .65rem .5rem; }
 .profile strong, .profile small { display: block; }
@@ -108,7 +111,7 @@ p + p { margin-top: .85rem; }
 .about-intro .section-header, .about-intro h2 { margin-bottom: 0; }
 .about-bio { max-width: 64ch; color: var(--muted); font-size: clamp(1rem, 1.35vw, 1.2rem); line-height: 1.7; }
 .teaching-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
-.teaching-card { display: flex; flex-direction: column; min-width: 0; background: var(--surface); border: 1px solid var(--line); }
+.teaching-card { position: relative; display: flex; flex-direction: column; min-width: 0; background: var(--surface); border: 1px solid var(--line); }
 .teaching-card img { width: 100%; height: clamp(12rem, 19vw, 21rem); border-bottom: 1px solid var(--line); background: #211b14; }
 .teaching-card .teaching-poster { object-fit: contain; padding: clamp(.65rem, 1.5vw, 1.25rem); }
 .teaching-card .teaching-photo { object-fit: cover; object-position: center 51%; }
@@ -116,6 +119,8 @@ p + p { margin-top: .85rem; }
 .teaching-copy h3 { margin-block: .45rem .65rem; font-size: clamp(1.4rem, 2.5vw, 2.05rem); }
 .teaching-copy > p:not(.eyebrow) { color: var(--muted); max-width: 55ch; }
 .teaching-copy .text-link { margin-top: auto; padding-top: 1rem; }
+.teaching-copy .text-link::after { content: ""; position: absolute; inset: 0; }
+.teaching-card:hover, .teaching-card:focus-within { border-color: var(--accent); }
 .gallery { margin-top: 1rem; border: 1px solid var(--line); background: var(--surface); }
 .gallery summary { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: .7rem; cursor: pointer; padding: 1rem clamp(.85rem, 2vw, 1.45rem); color: var(--accent); font-weight: 700; list-style: none; }
 .gallery summary::-webkit-details-marker { display: none; }
@@ -129,6 +134,37 @@ p + p { margin-top: .85rem; }
 .gallery-grid a:hover { border-color: var(--accent); color: var(--accent); }
 .gallery-grid img { width: 100%; aspect-ratio: 4 / 3; max-height: 13rem; object-fit: cover; }
 .gallery-grid span { padding: .6rem .7rem; font-size: .82rem; font-weight: 600; overflow-wrap: anywhere; }
+
+html:has(.photo-dialog[open]) { overflow: hidden; scrollbar-gutter: stable; }
+.photo-dialog {
+    width: fit-content;
+    max-width: min(70rem, calc(100vw - 2rem));
+    max-height: calc(100dvh - 2rem);
+    margin: auto;
+    padding: .55rem;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid #8f7350;
+    box-shadow: 0 24px 80px #000a;
+    overscroll-behavior: contain;
+}
+.photo-dialog[open] { animation: photo-in 220ms ease-out both; }
+.photo-dialog::backdrop { background: #0b0907df; animation: photo-fade-in 220ms ease-out both; }
+.photo-dialog.is-closing { animation: photo-out 160ms ease-in both; }
+.photo-dialog.is-closing::backdrop { animation: photo-fade-out 160ms ease-in both; }
+.photo-dialog figure { position: relative; }
+.photo-dialog img { width: auto; max-width: 100%; max-height: calc(100dvh - 7rem); margin-inline: auto; object-fit: contain; }
+.photo-dialog figcaption { padding: .75rem .55rem .35rem; color: var(--muted); font-size: .88rem; text-align: center; }
+.photo-close { position: absolute; z-index: 1; top: .45rem; right: .45rem; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid #8f7350; background: var(--canvas); color: var(--accent-light); font: inherit; font-size: 1.5rem; cursor: pointer; }
+.photo-close:hover { background: var(--accent); color: var(--canvas); }
+.photo-close:focus-visible { outline: 3px solid var(--accent-light); outline-offset: 2px; }
+@keyframes photo-in { from { opacity: 0; transform: translateY(8px) scale(.97); } to { opacity: 1; transform: none; } }
+@keyframes photo-out { to { opacity: 0; transform: translateY(6px) scale(.98); } }
+@keyframes photo-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes photo-fade-out { to { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+    .photo-dialog[open], .photo-dialog[open]::backdrop { animation: none; }
+}
 .contact-section { display: grid; grid-template-columns: 1.4fr .6fr; gap: 1.3rem; align-items: center; background: radial-gradient(circle at 100% 0, #41301d, transparent 70%), var(--deep); border: 1px solid #8f7350; padding: clamp(1.5rem, 5vw, 3rem); margin-top: clamp(2rem, 5vw, 4rem); }
 .contact-section h2 { max-width: 20ch; }
 .contact-section p:last-child { color: var(--muted); }
